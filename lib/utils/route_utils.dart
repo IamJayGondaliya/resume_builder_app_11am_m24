@@ -16,7 +16,7 @@ class MyRoutes {
     {
       'title': 'Education',
       'route': 'education',
-      'icon': '$iconPath/education',
+      'icon': '$iconPath/education.png',
     },
     {
       'title': 'Experience ',
