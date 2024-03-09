@@ -1,6 +1,9 @@
 //Singleton =>  can have only one object
+import 'dart:io';
+
 class Globals {
   String? name, email, phone, address;
+  File? image;
 
   //1: create private named constructor
   Globals._();
