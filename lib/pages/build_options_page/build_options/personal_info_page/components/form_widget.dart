@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:resume_builder_app/utils/globals.dart';
 import 'package:resume_builder_app/widgets/my_snackbar.dart';
 
 //UDF
 Widget formWidget({
   required BuildContext context,
+  bool genderSelection = false,
+  void Function(String?)? onGenderSelected,
 }) {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -16,42 +19,16 @@ Widget formWidget({
     color: Colors.white,
     child: Form(
       key: formKey,
-      // autovalidateMode:
-      //     AutovalidateMode.onUserInteraction,
       child: SingleChildScrollView(
         child: Column(
           children: [
             Row(
               children: [
-                // const Icon(
-                //   Icons.person,
-                // ),
-                // const SizedBox(
-                //   width: 20,
-                // ),
                 Expanded(
                   child: TextFormField(
-                    //1
-                    // onChanged: (val) {
-                    //   name = val;
-                    //   setState(() {});
-                    // },
-                    //2
-                    // controller: nameController,
-                    //3
-                    // onFieldSubmitted: (val) {
-                    //   name = val;
-                    //   setState(() {});
-                    // },
-                    //4
-                    // formKey.currentState!.save() =>  void
                     onSaved: (val) {
                       Globals.globals.name = val;
                     },
-                    // String?
-                    // null => OK
-                    // String => error
-                    // formKey.currentState!.validate() => bool
                     validator: (val) {
                       if (val!.isEmpty) {
                         return "Must enter name";
@@ -68,7 +45,6 @@ Widget formWidget({
                       labelText: "Name",
                       hintStyle: TextStyle(
                         color: Colors.grey.shade400,
-                        // fontSize: 18,
                       ),
                       // border: const UnderlineInputBorder(),
                       border: OutlineInputBorder(
@@ -165,6 +141,39 @@ Widget formWidget({
             const SizedBox(
               height: 20,
             ),
+            CheckboxListTile(
+              value: false,
+              title: const Text("Dart"),
+              onChanged: (val) {},
+            ),
+            //GenderSelection
+            Visibility(
+              visible: genderSelection,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Gender"),
+                  RadioListTile(
+                    value: "Male",
+                    groupValue: Globals.globals.gender,
+                    onChanged: onGenderSelected,
+                    title: const Text("Male"),
+                    controlAffinity: ListTileControlAffinity.trailing,
+                  ),
+                  RadioListTile(
+                    value: "Female",
+                    groupValue: Globals.globals.gender,
+                    onChanged: onGenderSelected,
+                    title: const Text("Female"),
+                    controlAffinity: ListTileControlAffinity.trailing,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            //Buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [

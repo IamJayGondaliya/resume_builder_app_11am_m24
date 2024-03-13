@@ -2,7 +2,7 @@
 import 'dart:io';
 
 class Globals {
-  String? name, email, phone, address;
+  String? name, email, phone, address, gender;
   File? image;
 
   //1: create private named constructor

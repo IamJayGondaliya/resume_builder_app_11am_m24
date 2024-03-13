@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:resume_builder_app/pages/build_options_page/build_options/personal_info_page/personal_info_page.dart';
+import 'package:resume_builder_app/pages/build_options_page/build_options/technical_skills_page/technical_skills_page.dart';
 import 'package:resume_builder_app/pages/build_options_page/build_options_page.dart';
 import 'package:resume_builder_app/pages/home_page/home_page.dart';
 import 'package:resume_builder_app/pages/splach_screen/splash_screen.dart';
@@ -19,13 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: {
-        MyRoutes.splashScreen: (context) => const SplashScreen(),
-        MyRoutes.homePage: (context) => const HomePage(),
-        MyRoutes.buildOptionPage: (context) => const BuildOptionsPage(),
-        MyRoutes.buildOptions[0]['route']: (context) =>
-            const PersonalInfoPage(),
-      },
+      routes: MyRoutes.routes,
     );
   }
 }

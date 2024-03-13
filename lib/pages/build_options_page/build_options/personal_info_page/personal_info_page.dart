@@ -92,7 +92,14 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
                         index: _selectedIndex,
                         children: [
                           //0
-                          formWidget(context: context),
+                          formWidget(
+                            context: context,
+                            genderSelection: true,
+                            onGenderSelected: (val) {
+                              Globals.globals.gender = val;
+                              setState(() {});
+                            },
+                          ),
                           //1
                           Container(
                             height: size.height * 0.25,

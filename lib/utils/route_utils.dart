@@ -1,3 +1,12 @@
+import 'package:flutter/material.dart';
+import 'package:resume_builder_app/pages/build_options_page/build_options/personal_info_page/personal_info_page.dart';
+import 'package:resume_builder_app/pages/build_options_page/build_options/technical_skills_page/technical_skills_page.dart';
+import 'package:resume_builder_app/pages/home_page/home_page.dart';
+import 'package:resume_builder_app/pages/pdf_page/pdf_page.dart';
+import 'package:resume_builder_app/pages/splach_screen/splash_screen.dart';
+
+import '../pages/build_options_page/build_options_page.dart';
+
 class MyRoutes {
   static String splashScreen = '/';
   static String homePage = 'home_page';
@@ -5,6 +14,15 @@ class MyRoutes {
   static String pdfPage = 'pdf_page';
 
   static String iconPath = "lib/assets/icons";
+
+  static Map<String, WidgetBuilder> routes = {
+    splashScreen: (context) => const SplashScreen(),
+    homePage: (context) => const HomePage(),
+    pdfPage: (context) => const PdfPage(),
+    buildOptionPage: (context) => const BuildOptionsPage(),
+    buildOptions[0]['route']: (context) => const PersonalInfoPage(),
+    buildOptions[5]['route']: (context) => const TechnicalSkillsPage(),
+  };
 
   //BuildOptions
   static List buildOptions = [

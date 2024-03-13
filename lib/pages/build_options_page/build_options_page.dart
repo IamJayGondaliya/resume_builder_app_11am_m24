@@ -25,7 +25,10 @@ class BuildOptionsPage extends StatelessWidget {
                       title: Text(e['title']),
                       trailing: IconButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, e['route']);
+                          Navigator.pushNamed(
+                            context,
+                            e['route'],
+                          );
                         },
                         icon: const Icon(Icons.arrow_forward_ios),
                       ),
@@ -35,6 +38,14 @@ class BuildOptionsPage extends StatelessWidget {
                 .toList(),
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => Navigator.pushNamed(
+          context,
+          MyRoutes.pdfPage,
+        ),
+        icon: const Icon(Icons.picture_as_pdf_outlined),
+        label: const Text("PDF Preview"),
       ),
     );
   }
